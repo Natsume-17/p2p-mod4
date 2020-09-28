@@ -1,0 +1,85 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+body {
+    --primary: #420099;
+    --secondary: #2946f6;
+    margin: 0px;
+}
+button {
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    text-decoration: none;
+    margin: 0;
+    color: var(--primary);
+    background: white;
+    border: 1px solid var(--primary);
+    border-radius: 5% 5% 25% 25%;
+    height: 2em;
+    font-size: 0.95em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: ease-in 0.2s all;
+    padding: 0 0.5em;
+}
+div#main {
+    padding: 1em;
+}
+input {
+    margin: 1em auto;
+    padding: 0.5em 0.75em;
+    font-size: 1.05em;
+}
+h1 {
+    background: var(--primary);
+    color: white;
+    font-weight: 300;
+    text-transform: uppercase;
+    font-size: 1.5em;
+    margin: 0px;
+    padding: 1em;
+}
+h2 {
+    margin-block-start: 0px;
+    margin-block-end: 10px;
+    font-size: 20px;
+    color: var(--primary);
+}
+button:hover {
+    background: var(--primary);
+    color: white;
+}
+div.actions {
+    margin-top: 10px;
+}
+div.movie {
+    display: inline-block;
+    width: auto;
+    padding: 1em;
+    box-shadow: 2px 2px 7px var(--secondary);
+    margin: 0.5em;
+}
+div.movie div.movie-img {
+    width: 200px;
+    height: auto;
+    min-height: 200px;
+    cursor: pointer;
+}
+div.movie div.movie-img img {
+    width: 100%;
+    height: auto;
+}
+div.movie div.title {
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
+    white-space: nowrap;
+    margin: 0.5em 0 1.25em;
+    font: bold 1em fantasy;
+}
+div.field {
+    color: var(--primary);
+    text-transform: uppercase;
+    font-size: 0.95em;
+}

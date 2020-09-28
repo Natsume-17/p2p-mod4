@@ -21,74 +21,66 @@ const indexView = (peliculas) => {
                ${peliculas[i].titulo || "<em>Sin título</em>"}
            </div>
            <div class="actions">
-                <!--Insertar aquí botones de "Show" y "Delete"-->
+               <button class="show" data-my-id="${i}">ver</button>
                <button class="edit" data-my-id="${i}">editar</button>
+               <button class="delete" data-my-id="${i}">borrar</button>
             </div>
         </div>\n`;
         i = i + 1;
     };
 
     view += `<div class="actions">
-                <!--Insertar aquí botones de "Añadir" y "Reset"-->
+               <button class="new">añadir</button>
+               <button class="reset">reset</button>
             </div>`;
 
     return view;
 };
 
 const editView = (i, pelicula) => {
-    return `<h2>Editar Película </h2>
+    return `<h2>Editar película</h2>
         <div class="field">
-        Título <br>
-        <input  type="text" id="titulo" placeholder="Título" 
-                value="${pelicula.titulo}">
+            Título<br>
+            <input type="text" id="titulo" placeholder="Título" value="${pelicula.titulo}">
         </div>
         <div class="field">
-        Director <br>
-        <input  type="text" id="director" placeholder="Director" 
-                value="${pelicula.director}">
+            Director/a<br>
+            <input type="text" id="director" placeholder="Director/a" value="${pelicula.director}">
         </div>
         <div class="field">
-        Miniatura <br>
-        <input  type="text" id="miniatura" placeholder="URL de la miniatura" 
-                value="${pelicula.miniatura}">
+            Miniatura<br>
+            <input type="text" id="miniatura" placeholder="URL de la miniatura" value="${pelicula.miniatura}">
         </div>
         <div class="actions">
-            <button class="update" data-my-id="${i}">
-                Actualizar
-            </button>
-            <button class="index">
-                Volver
-            </button>
-       `;
+            <button class="update" data-my-id="${i}">actualizar</button>
+            <button class="index">volver</button>
+        </div>`;
 }
 
 const showView = (pelicula) => {
-    // Completar: genera HTML con información de la película
-    // ...
-
-    return `
-     <p>
-
-     
-     
-     </p>
+    return `<p>La película <strong>${pelicula.titulo}</strong> fue dirigida por <strong>${pelicula.director}</strong>.</p>
      <div class="actions">
-        <button class="index">Volver</button>
+        <button class="index">volver</button>
      </div>`;
 }
 
 const newView = () => {
-    // Completar: genera formulario para crear nuevo quiz
-    // ...
-
-    return `<h2>Crear Película</h2>
-
-
-
-
-
+    return `<h2>Crear película</h2>
+        <div class="field">
+            Título<br>
+            <input type="text" id="titulo" placeholder="Título">
+        </div>
+        <div class="field">
+            Director/a<br>
+            <input type="text" id="director" placeholder="Director/a">
+        </div>
+        <div class="field">
+            Miniatura<br>
+            <input type="text" id="miniatura" placeholder="URL de la miniatura">
+        </div>
         <div class="actions">
-            <button class="index">Volver</button>
+            <button class="create">crear</button>
+            <button class="index">volver</button>
         </div>`;
 }
 
@@ -99,20 +91,23 @@ const indexContr = () => {
 };
 
 const showContr = (i) => {
-    // Completar: controlador que muestra la vista showView(pelicula)
-    // ...
-
+    let pelicula = JSON.parse(localStorage.mis_peliculas)[i];
+    document.getElementById('main').innerHTML = showView(pelicula);
 };
 
 const newContr = () => {
-    // Completar: controlador que muestra la vista newView()
-    // ...
-
+    document.getElementById('main').innerHTML = newView();
 };
 
 const createContr = () => {
-    // Completar: controlador que crea una película nueva en el modelo guardado en localStorage
-    // ...
+    let mis_peliculas = JSON.parse(localStorage.mis_peliculas);
+    let nueva_pelicula = {};
+    nueva_pelicula.titulo = document.getElementById('titulo').value;
+    nueva_pelicula.director = document.getElementById('director').value;
+    nueva_pelicula.miniatura = document.getElementById('miniatura').value;
+    mis_peliculas.push(nueva_pelicula);
+    localStorage.mis_peliculas = JSON.stringify(mis_peliculas);
+    indexContr();
 };
 
 const editContr = (i) => {
@@ -140,14 +135,18 @@ const resetContr = () => {
 };
 
 // ROUTER de eventos
-const matchEvent = (ev, sel) => ev.target.matches(sel);
-const myId = (ev) => Number(ev.target.dataset.myId);
+const matchEvent = (ev, sel) => ev.target.matches(sel); // simplifica código en if / else if 
+const myId = (ev) => Number(ev.target.dataset.myId); // simplifica código en parámetro de llamada a función'Contr'
 
 document.addEventListener('click', ev => {
-    if (matchEvent(ev, '.index')) indexContr();
-    else if (matchEvent(ev, '.edit')) editContr(myId(ev));
-    else if (matchEvent(ev, '.update')) updateContr(myId(ev));
-    // Completar añadiendo los controladores que faltan
+    if (matchEvent(ev, '.index')) indexContr(); // botones 'volver'
+    else if (matchEvent(ev, '.show')) showContr(myId(ev)); // botones 'ver'
+    else if (matchEvent(ev, '.edit')) editContr(myId(ev)); // botones 'editar'
+    else if (matchEvent(ev, '.update')) updateContr(myId(ev)); // botón 'actualizar'
+    else if (matchEvent(ev, '.new')) newContr(); // botón 'añadir'
+    else if (matchEvent(ev, '.create')) createContr(); // botón 'crear'
+    else if (matchEvent(ev, '.delete')) deleteContr(myId(ev)); // botones 'borrar'
+    else if (matchEvent(ev, '.reset')) resetContr(); // botón 'reset'
 })
 
 // Inicialización        

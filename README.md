@@ -1,10 +1,5 @@
-<img  align="left" width="150" style="float: left;" src="https://www.upm.es/sfs/Rectorado/Gabinete%20del%20Rector/Logos/UPM/CEI/LOGOTIPO%20leyenda%20color%20JPG%20p.png">
-<img  align="right" width="150" style="float: right;" src="https://miriadax.net/miriadax-theme/images/custom/logo_miriadax_new.svg">
-
-<br/><br/><br/>
-# Módulo 4: Eventos, Objetos, Arrays, JSON, Storage API, Boolean, operadores lógicos y MVC. - Entrega P2P: MVC Cliente
-
-Versión: 22 de Mayo de 2020
+# p2p-mod4
+Ejercicio obligatorio P2P del módulo 4 (curso de "Desarrollo frontend con HTML, CSS y JavaScript" - 10ª edición).
 
 ## Objetivos
 
@@ -13,13 +8,13 @@ Versión: 22 de Mayo de 2020
 
 ## Descripción de la práctica
 
-Esta entrega se basa en el desarrollo de una aplicación web de cliente usando las príncipales tecnologías web (HTML, CSS y JS) y el patrón MVC. La aplicación consiste en una base de datos de películas, en la que se almacena el título, director y URL de la carátula de cada película. En esta base de datos se puede consultar la información de las películas, añadir películas nuevas, editar las existentes, borrarlas y reiniciar la base de datos. Estas acciones se llevan a cabo al hacer clic en los distintos botones que proporciona la aplicación web.
+Esta entrega se basa en el desarrollo de una aplicación web de cliente usando las principales tecnologías web (HTML, CSS y JS) y el patrón MVC. La aplicación consiste en una base de datos de películas, en la que se almacena el título, director y URL de la carátula de cada película. En esta base de datos se puede consultar la información de las películas, añadir películas nuevas, editar las existentes, borrarlas y reiniciar la base de datos. Estas acciones se llevan a cabo al hacer clic en los distintos botones que proporciona la aplicación web.
 
 <p align="center">
   <img width="568" height="320"  src="https://raw.githubusercontent.com/ging-moocs/MOOC_html_mod4-MVC_cliente_entrega/master/files/enunciado.png">
 </p>
 
-En el código proporcionado sólo está implementada la funcionalidad de listar las películas existentes y editar película. El alumno debe implementar las funcionalidades restantes (crear, mostrar, eliminar y reiniciar).
+En el código proporcionado solo está implementada la funcionalidad de listar las películas existentes y editar película. El alumno debe implementar las funcionalidades restantes (crear, mostrar, eliminar y reiniciar).
 
 ## Descargar el código del proyecto
 

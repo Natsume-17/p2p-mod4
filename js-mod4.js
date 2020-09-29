@@ -125,18 +125,24 @@ const updateContr = (i) => {
 };
 
 const deleteContr = (i) => {
-    // Completar:  controlador que actualiza el modelo borrando la película seleccionada
-    // Genera diálogo de confirmación: botón Aceptar devuelve true, Cancel false
+    let mis_peliculas = JSON.parse(localStorage.mis_peliculas);
+    let eleccion = Boolean;
+    confirm("¿Quieres borrar la película?");
+    eleccion = true;
+    if (eleccion === true) {
+        mis_peliculas.splice(i, 1);
+        localStorage.mis_peliculas = JSON.stringify(mis_peliculas);
+    }
+    indexContr();
 };
 
 const resetContr = () => {
-    // Completar:  controlador que reinicia el modelo guardado en localStorage con las películas originales
-
+    // falta el código para resetear al array inicial de objetos
 };
 
 // ROUTER de eventos
-const matchEvent = (ev, sel) => ev.target.matches(sel); // simplifica código en if / else if 
-const myId = (ev) => Number(ev.target.dataset.myId); // simplifica código en parámetro de llamada a función'Contr'
+const matchEvent = (ev, sel) => ev.target.matches(sel); // simplifica código en if - else if 
+const myId = (ev) => Number(ev.target.dataset.myId); // simplifica código en parámetro de llamada a función
 
 document.addEventListener('click', ev => {
     if (matchEvent(ev, '.index')) indexContr(); // botones 'volver'
@@ -147,7 +153,7 @@ document.addEventListener('click', ev => {
     else if (matchEvent(ev, '.create')) createContr(); // botón 'crear'
     else if (matchEvent(ev, '.delete')) deleteContr(myId(ev)); // botones 'borrar'
     else if (matchEvent(ev, '.reset')) resetContr(); // botón 'reset'
-})
+});
 
 // Inicialización        
 document.addEventListener('DOMContentLoaded', indexContr);

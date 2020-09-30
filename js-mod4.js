@@ -6,6 +6,7 @@ let mis_peliculas_iniciales = [
 ];
 
 localStorage.mis_peliculas = localStorage.mis_peliculas || JSON.stringify(mis_peliculas_iniciales);
+let mis_peliculas = mis_peliculas_iniciales;
 
 // VISTAS
 const indexView = (peliculas) => {
@@ -137,7 +138,10 @@ const deleteContr = (i) => {
 };
 
 const resetContr = () => {
-    // falta el código para resetear al array inicial de objetos
+    let mis_peliculas = JSON.parse(localStorage.mis_peliculas);
+	mis_peliculas = mis_peliculas_iniciales;
+	localStorage.mis_peliculas = JSON.stringify(mis_peliculas);
+    indexContr();
 };
 
 // ROUTER de eventos
